@@ -1,0 +1,62 @@
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 52px;
+  height: 28px;
+  background: var(--bg-hover);
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-base), border-color var(--transition-base);
+  padding: 3px;
+}
+
+[data-theme="dark"] .track {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+[data-theme="light"] .track {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: transform var(--transition-base), background var(--transition-base), color var(--transition-base);
+}
+
+[data-theme="dark"] .thumb {
+  background: var(--brand-500);
+  color: #fff;
+  transform: translateX(0);
+}
+
+[data-theme="light"] .thumb {
+  background: var(--warning-500);
+  color: #fff;
+  transform: translateX(24px);
+}
+
+.toggle:hover .track {
+  border-color: var(--brand-400);
+}
+
+.toggle:focus-visible .track {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+  outline: none;
+}

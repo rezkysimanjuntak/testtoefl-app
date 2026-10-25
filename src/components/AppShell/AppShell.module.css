@@ -1,0 +1,84 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar wrapper ── */
+.sidebarWrapper {
+  flex-shrink: 0;
+  transition: width var(--transition-base);
+}
+
+/* ── Content wrapper ── */
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg-base);
+}
+
+.pageContent {
+  flex: 1;
+  padding: 28px;
+  overflow-x: hidden;
+}
+
+/* ── Loading ── */
+.loadingScreen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--bg-base);
+}
+
+.loadingSpinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--border-default);
+  border-top-color: var(--brand-500);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingText {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ── Mobile overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: calc(var(--z-sticky) - 1);
+  backdrop-filter: blur(2px);
+}
+
+/* ── Mobile sidebar ── */
+@media (max-width: 768px) {
+  .sidebarWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: var(--z-sticky);
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+  }
+
+  .sidebarWrapper.mobileVisible {
+    transform: translateX(0);
+  }
+
+  .pageContent {
+    padding: 20px 16px;
+  }
+}
