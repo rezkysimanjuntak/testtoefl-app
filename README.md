@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TOEFL Exam App
 
-## Getting Started
+A modern, responsive TOEFL practice-exam web app built with **Next.js 16**, **React 19** and **TypeScript**. Styling is plain CSS (CSS Modules plus `src/app/globals.css`), with a dark/light theme.
 
-First, run the development server:
+> **Status: in development.** Front-end only with dummy data. There is no backend or database yet. Authentication is simulated in the browser. The final target is to run inside [Safe Exam Browser](https://safeexambrowser.org/).
+
+## Features
+
+**Examinee**
+- Login, dashboard, and exam list
+- Exam engine with timer and session persistence
+- Exam result screen
+- **My Results**: history, score progress chart, per-section breakdown, and a detailed score report per attempt
+- Profile page
+
+**Admin**
+- Dashboard with quick actions
+- Exam management (create, edit, delete)
+- Question bank
+- User management with profile and history
+- Results and analytics (KPIs, score distribution, per-exam bars)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use the demo-credential button on the login pages. The admin demo account is `admin@toeflexam.edu` / `Admin@1234`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+├── app/          # Routes: /, /login/{user,admin}, /dashboard/*, /admin/*, /exam/[id]
+├── components/   # AppShell, Sidebar, Topbar, ThemeToggle, Exam (engine, timer, start screen)
+├── context/      # AuthContext, ThemeContext
+└── lib/          # auth, examData, adminData, examSession (dummy data and helpers)
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Roadmap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] Phase 1–2: landing, login, user dashboard, exam flow
+- [x] Phase 3: admin panel
+- [x] Phase 4: user results and analytics
+- [ ] Phase 5: Safe Exam Browser hardening (fullscreen and tab-leave detection, copy-paste blocking, session handling)
+- [ ] Real backend, database and authentication
+- [ ] Listening, Speaking and Writing sections (only Reading is simulated)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 16 has breaking changes versus older versions. See `AGENTS.md` and `node_modules/next/dist/docs/` before changing framework-level code.
+- All credentials and data are for demonstration only. Do not use real passwords.
